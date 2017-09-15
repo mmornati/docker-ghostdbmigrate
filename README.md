@@ -20,7 +20,7 @@ docker pull mmornati/docker-ghostdbmigrate
 ### Usage
 
 ```bash
-docker run -it --rm --name blogmigrate -e NODE_ENV=production -e DB_CURRENT_VERSION=1.0.2 -v /Users/mmornati/ghost-blog-test:/ghost-override mmornati/docker-ghostblog:v1.5.0 /ghost/migrate-database.sh
+docker run -it --rm --name blogmigrate -e NODE_ENV=production -e DB_CURRENT_VERSION=1.0.2 -v /Users/mmornati/ghost-blog-test:/ghost-override mmornati/docker-ghostdbmigrate:v1.8.6
 ```
 
 You have to change:
