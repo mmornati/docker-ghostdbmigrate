@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/mmornati/docker-ghostdbmigrate.svg)](https://travis-ci.org/mmornati/docker-ghostdbmigrate)[![](https://images.microbadger.com/badges/image/mmornati/docker-ghostdbmigrate.svg)](https://microbadger.com/images/mmornati/docker-ghostdbmigrate "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/mmornati/docker-ghostdbmigrate.svg)](https://microbadger.com/images/mmornati/docker-ghostdbmigrate "Get your own version badge on microbadger.com")
+
+
 # docker-ghostdbmigrate
 This Docker can be used to migrate the Ghost Blog database from a newer version.
 
