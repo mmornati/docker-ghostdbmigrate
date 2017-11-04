@@ -3,7 +3,7 @@
 #
 
 #Build step for Ghost Image
-FROM node:6.10 as ghost-builder
+FROM node:6 as ghost-builder
 RUN npm install --loglevel=error -g knex-migrator ghost-cli
 
 ENV GHOST_VERSION 1.16.2
@@ -22,7 +22,7 @@ COPY config.production.json /ghost/blog
 COPY MigratorConfig.js /ghost/blog
 
 #Create the Docker Ghost Blog
-FROM node:6.11.3-alpine
+FROM node:6-alpine
 LABEL maintainer="Marco Mornati <marco@mornati.net>"
 
 # Install Ghost
