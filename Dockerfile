@@ -1,52 +1,13 @@
 #
 # Docker Database Migrate Tool for Ghost Blog
 #
-
-#Build step for Ghost Image
-FROM node:6 as ghost-builder
-RUN npm install --loglevel=error -g knex-migrator ghost-cli
-
-ENV GHOST_VERSION 1.16.2
-RUN addgroup --system -gid 1276 ghost && \
-    adduser --system --home /ghost --ingroup ghost --uid 1276 ghost && \
-    mkdir /ghost/blog && \
-    cd /ghost/blog && \
-    ghost install $GHOST_VERSION --local && \
-    echo $GHOST_VERSION > /ghost/version
-
-COPY run-ghost.sh /ghost
-COPY migrate-database.sh /ghost
-
-COPY config.production.json /ghost/blog
-
-COPY MigratorConfig.js /ghost/blog
-
-#Create the Docker Ghost Blog
-FROM node:6-alpine
+FROM mmornati/docker-ghostblog:1.16.2
 LABEL maintainer="Marco Mornati <marco@mornati.net>"
 
-# Install Ghost
-RUN addgroup -S -g 1276 ghost && \
-    adduser -S -h /ghost -G ghost -u 1276 ghost
+RUN cd $GHOST_INSTALL && npm install --loglevel=error knex-migrator
 
-COPY --from=ghost-builder /ghost /ghost
-RUN chown -R ghost:ghost /ghost && \
-    mkdir /ghost-override && \
-    chown -R ghost:ghost /ghost-override
-
-RUN npm install --loglevel=error -g knex-migrator
-
-USER ghost
-ENV HOME /ghost
-
-# Define working directory.
-WORKDIR /ghost
-
-# Set environment variables.
-ENV NODE_ENV production
-
-# Define mountable directories.
-VOLUME ["/ghost-override"]
+COPY migrate-database.sh $GHOST_INSTALL
+COPY MigratorConfig.js $GHOST_INSTALL
 
 # Define default command.
-CMD ["/bin/sh", "/ghost/migrate-database.sh"]
+CMD ["/bin/sh", "-c", "/bin/sh ${GHOST_INSTALL}/migrate-database.sh"]
