@@ -1,3 +1,6 @@
+##DEPRECATED##
+There is no need anymore for this image. Knex migration tool is already contained into the ghost base installation and it is actually automatically run by the ghost base image.
+
 [![Build Status](https://travis-ci.org/mmornati/docker-ghostdbmigrate.svg)](https://travis-ci.org/mmornati/docker-ghostdbmigrate)[![](https://images.microbadger.com/badges/image/mmornati/docker-ghostdbmigrate.svg)](https://microbadger.com/images/mmornati/docker-ghostdbmigrate "Get your own image badge on microbadger.com")[![](https://images.microbadger.com/badges/version/mmornati/docker-ghostdbmigrate.svg)](https://microbadger.com/images/mmornati/docker-ghostdbmigrate "Get your own version badge on microbadger.com")
 
 
